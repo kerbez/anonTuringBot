@@ -12,6 +12,7 @@ class User:
     fakeUsername = ""
     chatId = None
     defaultUser = None
+    defaultUserChatId = None
 
     def __init__(self, realUsername, chatId):
         self.realUsername = realUsername
@@ -24,6 +25,7 @@ class User:
                 self.id = id
                 self.fakeUsername = ref.child(id).child('fakeUsername').get()
                 self.defaultUser = ref.child(id).child('defaultUser').get()
+                self.defaultUserChatId = ref.child(id).child('defaultUserChatId').get()
                 print(self.fakeUsername, self.defaultUser)
                 is_ok = 1
 
@@ -33,6 +35,7 @@ class User:
                 'chatId': chatId,
                 'fakeUsername': '-',
                 'defaultUser': '-',
+                'defaultUserChatId': '-',
             })
             self.id = new_user_ref.key
 
@@ -43,8 +46,14 @@ class User:
         })
         self.fakeUsername = fakeUsername
 
-    def setdefaultUser(self, defaultUser):
+    def setdefaultUser(self, defaultUser, defaultUserChatId):
+        ref = db.reference('users')
+        ref.child(self.id).update({
+            'defaultUser': defaultUser,
+            'defaultUserChatId': defaultUserChatId,
+        })
         self.defaultUser = defaultUser
+        self.defaultUserChatId = defaultUserChatId
 
     def getRealUsername(self):
         return self.realUsername
