@@ -1,29 +1,16 @@
 import unittest
-
-from my_sum import sum
+from main import *
 
 
 class TestSum(unittest.TestCase):
-    def test_list_int(self):
-        """
-        Test that it can sum a list of integers
-        """
-        data = [1, 2, 3]
-        result = sum(data)
-        self.assertEqual(result, 6)
+    """
+    ustala T.T
+    ne budu seichas pisat' :P
+    bot klassnyi zavrta na heroku postaraius' zalit'
+    esli hotite potestit' mozhete u sebia zapustit'
+    bye
+    """
 
-    def test_list_fraction(self):
-        """
-        Test that it can sum a list of fractions
-        """
-        data = [Fraction(1, 4), Fraction(1, 4), Fraction(2, 5)]
-        result = sum(data)
-        self.assertEqual(result, 1)
-
-    def test_bad_type(self):
-        data = "banana"
-        with self.assertRaises(TypeError):
-            result = sum(data)
 
 if __name__ == '__main__':
     unittest.main()

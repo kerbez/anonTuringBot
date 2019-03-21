@@ -33,7 +33,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['help'])
-def handle_start(message):
+def handle_help(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -56,7 +56,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['my_default_user'])
-def handle_start(message):
+def handle_my_default_user(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -68,7 +68,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['set_username'])
-def handle_start(message):
+def handle_set_username(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -85,7 +85,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['ishere'])
-def handle_start(message):
+def handle_ishere(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -106,7 +106,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['write'])
-def handle_start(message):
+def handle_write(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -136,7 +136,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['write_always_to'])
-def handle_start(message):
+def handle_write_always_to(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
@@ -166,7 +166,7 @@ def handle_start(message):
 
 
 @bot.message_handler(commands=['del_write_always_to'])
-def handle_start(message):
+def handle_del_write_always_to(message):
     chatId = message.chat.id
     realUsername = message.from_user.username
     user = User(realUsername, chatId)
