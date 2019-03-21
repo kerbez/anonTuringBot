@@ -45,12 +45,14 @@ def handle_start(message):
         bot.send_message(chatId, 'Your fake username is *' + fakeUsername + '*', parse_mode=telegram.ParseMode.MARKDOWN)
     if defaultUser != '-':
         bot.send_message(chatId, 'Your default user is *' + defaultUser + '*', parse_mode=telegram.ParseMode.MARKDOWN)
-    bot.send_message(chatId, 'Here you can send anonymous messages to user whom I know, you can check it by command /ishere _username_ \n'
-                             'You can write to user with command /write _username_ _message_\n'
-                             'All users need to set their fake username with command /set_username _fakeusername_ its a username that will see resiever of message\n'
-                             'To make chatting more comfortable you can set your default user whom you are always writing with command /wite_always to _username_\n'
-                             'Also you can delete your default user with command /del_write_always_to\n'
-                             'You can check you default user with command /my_default_user', parse_mode=telegram.ParseMode.MARKDOWN)
+    bot.send_message(chatId, 'Here you can send anonymous messages to user whom '
+                             'I know, you can check it by \ncommand /ishere _username_ ', parse_mode=telegram.ParseMode.MARKDOWN)
+    bot.send_message(chatId, 'You can write to user with \ncommand /write _username_ _message_', parse_mode=telegram.ParseMode.MARKDOWN)
+    bot.send_message(chatId, 'All users need to set their fake username with command '
+                             '\n/set_username fakeusername its a username that will see receiver of message')
+    bot.send_message(chatId, 'To make chatting more comfortable you can set your '
+                             'default user whom you are always writing with command \n/write_always_to username \nAlso you can delete your default user with command /del_write_always_to \nYou can check you default user with command '
+                             '/my_default_user')
 
 
 @bot.message_handler(commands=['my_default_user'])
@@ -149,9 +151,9 @@ def handle_start(message):
             for id in user_ref:
                 if user_ref[id]['realUsername'] == m[1]:
                     user.setdefaultUser(m[1], user_ref[id]['chatId'])
-                    bot.send_message(chatId, '*You set default user as* _' + m[1] + '_')
+                    bot.send_message(chatId, '*You set default user as* _' + m[1] + '_', parse_mode=telegram.ParseMode.MARKDOWN)
                     bot.send_message(chatId, 'Any message you write without command will be automatically send to this user')
-                    bot.send_message(chatId, 'You can cancel this setting using /del_write_always_to command')
+                    bot.send_message(chatId, 'You can cancel this setting using \n/del_write_always_to command')
                     is_ok = 1
             if is_ok == 0:
                 bot.send_message(user.chatId, 'no such user')
